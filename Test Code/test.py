@@ -1,5 +1,5 @@
 import numpy as np
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 from random import seed
 from random import randint
 
@@ -22,5 +22,18 @@ v = np.array(v)
 # Analysis
 val = np.around(np.array([np.mean(v[:,0]),np.mean(v[:,1]),np.mean(v[:,2]),np.mean(v[:,3])])) # Field Measured Average
 s = np.array([np.std(v[:,0]),np.std(v[:,1]),np.std(v[:,2]),np.std(v[:,3])]) # Field Measured Standard Deviation
+
+
+
+# Residual Plot
+res = np.array(v,dtype=float)
+res[:,0] -= val[0] 
+res[:,1] -= val[1]
+res[:,2] -= val[2]
+res[:,3] -= val[3]
+
+#plt.figure()
+#plt.plot(["Morning","Afternoon","Evening"],-res[:,0],'g*',-res[:,1],'k*',-res[:,2],'b*',-res[:,3],'r*')
+#plt.show()
 
 
