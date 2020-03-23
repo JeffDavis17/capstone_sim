@@ -39,7 +39,10 @@ m = np.mean(m)
 a = np.mean(a)
 e = np.mean(e)
 
-x = ["morning", "afternoon", "evening"]
+x = ["Morning", "Afternoon", "Evening"]
 plt.figure()
-plt.bar(x,[m,a,e])
+plt.title("Time-Based Average Residual Intensity")
+plt.ylabel("Residual Intensity")
+plt.bar(x,[m,a,e],width=0.3)
+plt.savefig("Residual Intensity")
 plt.show()
