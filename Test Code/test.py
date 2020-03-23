@@ -5,11 +5,6 @@ from random import randint
 
 
 # Test Test_R  30:
-'''
-Comparing gathered intensity values of buildings of interests during the morning, 
-afternoon and evening to test for variability. This will be done by comparing the mean, 
-standard deviation and residual analysis of the intensity values of individual cells between two times.   
-'''
 # Range usually between -88 and -55, analyzing 4 cells, with 3 readings: Morning, Noon, Evening
 v = []
 t_val = np.array([-67,-81,-58,-62]) # "True" intensity values
@@ -19,10 +14,10 @@ for i in range(3):
     v.append(val)
 v = np.array(v)
 
+
 # Analysis
 val = np.around(np.array([np.mean(v[:,0]),np.mean(v[:,1]),np.mean(v[:,2]),np.mean(v[:,3])])) # Field Measured Average
 s = np.array([np.std(v[:,0]),np.std(v[:,1]),np.std(v[:,2]),np.std(v[:,3])]) # Field Measured Standard Deviation
-
 
 
 # Residual Plot
@@ -31,9 +26,20 @@ res[:,0] -= val[0]
 res[:,1] -= val[1]
 res[:,2] -= val[2]
 res[:,3] -= val[3]
-
-#plt.figure()
-#plt.plot(["Morning","Afternoon","Evening"],-res[:,0],'g*',-res[:,1],'k*',-res[:,2],'b*',-res[:,3],'r*')
-#plt.show()
+print(res)
 
 
+# BAR CHART 
+
+m = np.array([1,1,1,3])
+a = np.array([1,1,1,0])
+e = np.array([1,1,1,1])
+
+m = np.mean(m)
+a = np.mean(a)
+e = np.mean(e)
+
+x = ["morning", "afternoon", "evening"]
+plt.figure()
+plt.bar(x,[m,a,e])
+plt.show()
